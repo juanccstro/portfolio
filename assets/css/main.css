@@ -1,5 +1,5 @@
 :root {
-    --paper: #f6f4ef;
+    --paper: rgba(246, 244, 239, 0.92);
     --ink: #1a1a1a;
     --ink-soft: #3a3a3a;
     --seal-red: #8f1d18;
@@ -25,6 +25,12 @@ a:hover {
     text-decoration: none;
 }
 
+.btn {
+    border-radius: 999px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
 .btn-dark {
     background-color: var(--ink);
     border-color: var(--ink);
@@ -46,6 +52,9 @@ a:hover {
 }
 
 header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     background-color: rgba(246, 244, 239, 0.85);
     backdrop-filter: blur(4px);
     border-bottom: 1px solid var(--border-soft);
@@ -54,6 +63,12 @@ header {
 .nav-link {
     font-size: 0.95rem;
     letter-spacing: 0.02em;
+    color: var(--ink);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--seal-red);
 }
 
 section:first-of-type {
@@ -107,15 +122,71 @@ section .border {
     margin: 1rem 0 2rem 0;
 }
 
+#proyectos .section-divider {
+    width: 64px;
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--paper);
-    background-image: url("../img/paper-texture.webp");
-    background-repeat: repeat;
-    backdrop-filter: blur(1px);
+   background-color: var(--paper);
     line-height: 1.6;
+}
+
+.icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    line-height: 0;
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--ink);
+    transition:
+            transform 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease,
+            background-color 0.2s ease;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    transform: scale(1.15);
+}
+
+.icon path {
+    fill: currentColor;
+}
+
+.icon-link:hover,
+.icon-link:focus {
+    color: var(--seal-red);
+    border-color: rgba(143, 29, 24, 0.35);
+    background: rgba(255, 255, 255, 0.75);
+    transform: translateY(-2px);
+}
+
+.icon-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(143, 29, 24, 0.18);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+            opacity 0.8s ease,
+            transform 0.8s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 footer {

@@ -29,11 +29,11 @@
 </header>
 
 <main id="main">
+    <!-- HERO -->
     <section class="py-5">
         <div class="container">
-            <div class="row align-items-center g-4">
+            <div class="row align-items-center g-4 reveal">
                 <div class="col-12 col-lg-7">
-                    <p class="mb-2 text-uppercase small">Portfolio</p>
                     <h1 class="display-5 fw-semibold mb-3">Juan Carlos Castro</h1>
                     <p class="h5 fw-normal mb-3">Desarrollador Web Full-Stack Junior</p>
 
@@ -50,9 +50,8 @@
                 </div>
 
                 <div class="col-12 col-lg-5">
-                    <div class="p-4 border rounded-3">
+                    <div class="p-4 border rounded-3 reveal">
                         <h2 class="h6 fw-semibold mb-3">Resumen</h2>
-
                         <ul class="mb-0">
                             <li>DAW (IES Pazo da Mercé)</li>
                             <li>Experiencia en maquetación responsive y WordPress</li>
@@ -65,23 +64,23 @@
         </div>
     </section>
 
-    <section id="proyectos" class="py-5">
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="py-5 reveal">
         <div class="container">
             <div class="d-flex align-items-end justify-content-between gap-3 mb-4">
                 <div>
                     <h2 class="h3 fw-semibold mb-1">Proyectos</h2>
                     <div class="section-divider"></div>
-
-                    <p class="mb-0">Repositorio y detalles del proyecto principal.</p>
                 </div>
             </div>
 
-            <article class="p-4 border rounded-3">
+            <article class="p-4 border rounded-3 reveal">
                 <div class="row g-3 align-items-center">
                     <div class="col-12 col-lg-8">
                         <h3 class="h4 mb-2">CourtConnect</h3>
                         <p class="mb-3">
-                            Plataforma web para organizar y gestionar eventos/partidos y comunidad, con autenticación y base de datos.
+                            Plataforma web para organizar y gestionar eventos, partidos y comunidad,
+                            con autenticación y base de datos.
                         </p>
 
                         <div class="d-flex gap-2 flex-wrap mb-3" aria-label="Tecnologías del proyecto">
@@ -95,7 +94,7 @@
                     </div>
 
                     <div class="col-12 col-lg-4 d-flex gap-2 justify-content-lg-end flex-wrap">
-                        <a class="btn btn-dark" href="projects/courtconnect.html">Ver detalles</a>
+                       <!-- <a class="btn btn-dark" href="projects/courtconnect.html">Ver detalles</a> -->
                         <a class="btn btn-outline-dark" href="https://github.com/juanccstro/courtconnect" target="_blank" rel="noopener noreferrer">Ver repositorio</a>
                     </div>
                 </div>
@@ -103,20 +102,23 @@
         </div>
     </section>
 
+    <!-- PERFIL -->
     <section id="perfil" class="py-5">
-        <div class="container">
+        <div class="container reveal">
             <h2 class="h3 fw-semibold mb-3">Perfil profesional</h2>
             <div class="section-divider"></div>
 
             <p class="mb-0">
-                Desarrollador web full-stack junior, formado en Desarrollo de Aplicaciones Web, con experiencia reciente en entorno WordPress,
-                maquetación responsive y optimización de sitios. Con base en PHP y MySQL y orientación a construir interfaces claras, funcionales y mantenibles,
+                Desarrollador web full-stack junior, formado en Desarrollo de Aplicaciones Web,
+                con experiencia reciente en entorno WordPress, maquetación responsive y optimización de sitios.
+                Con base en PHP y MySQL y orientación a construir interfaces claras, funcionales y mantenibles,
                 cuidando el rendimiento y la experiencia de usuario.
             </p>
         </div>
     </section>
 
-    <section id="tecnologias" class="py-5">
+    <!-- TECNOLOGÍAS -->
+    <section id="tecnologias" class="py-5 reveal">
         <div class="container">
             <h2 class="h3 fw-semibold mb-4">Tecnologías</h2>
             <div class="section-divider"></div>
@@ -152,7 +154,7 @@
                             <li>Git & GitHub</li>
                             <li>WordPress</li>
                             <li>Docker</li>
-                            <li>PHPStorm</li>
+                            <li>PhpStorm</li>
                         </ul>
                     </div>
                 </div>
@@ -160,17 +162,33 @@
         </div>
     </section>
 
-    <section id="contacto" class="py-5">
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-5 reveal">
         <div class="container">
             <h2 class="h3 fw-semibold mb-3">Contacto</h2>
 
-            <div class="d-flex gap-2 flex-wrap">
-                <a class="btn btn-dark" href="mailto:castro.pazo.jc@gmail.com">Email</a>
-                <a class="btn btn-outline-dark" href="https://github.com/juanccstro" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/juanc-castro/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <div class="contact-icons d-flex gap-3 align-items-center">
+                <a class="icon-link" href="mailto:castro.pazo.jc@gmail.com" aria-label="Enviar email">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64L12 9.548l6.545-4.91l1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                    </svg>
+                </a>
+
+                <a class="icon-link" href="https://github.com/juanccstro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 416">
+                        <path fill="currentColor" d="M213.5 0q88.5 0 151 62.5T427 213q0 70-41 125.5T281 416q-14 2-14-11v-58q0-27-15-40q44-5 70.5-27t26.5-77q0-34-22-58q11-26-2-57q-18-5-58 22q-26-7-54-7t-53 7q-18-12-32.5-17.5T107 88h-6q-12 31-2 57q-22 24-22 58q0 55 27 77t70 27q-11 10-13 29q-42 18-62-18q-12-20-33-22q-2 0-4.5.5t-5 3.5t8.5 9q14 7 23 31q1 2 2 4.5t6.5 9.5t13 10.5T130 371t30-2v36q0 13-14 11q-64-22-105-77.5T0 213q0-88 62.5-150.5T213.5 0z"/>
+                    </svg>
+                </a>
+
+                <a class="icon-link" href="https://www.linkedin.com/in/juanc-castro/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432">
+                        <path fill="currentColor" d="M319 221.5q-8-10.5-30-10.5q-27 0-38 16t-11 45v146q0 5-3 8t-8 3h-76q-4 0-7.5-3t-3.5-8V148q0-4 3.5-7.5t7.5-3.5h74q4 0 6.5 2t3.5 6v5q1 2 1 7q28-27 76-27q53 0 83 27t30 79v182q0 5-3.5 8t-7.5 3h-78q-4 0-7.5-3t-3.5-8V254q0-22-8-32.5zM88 91.5Q73 107 51.5 107T15 91.5t-15-37T15 18T51.5 3T88 18t15 36.5t-15 37zm13 56.5v270q0 5-3.5 8t-7.5 3H14q-5 0-8-3t-3-8V148q0-4 3-7.5t8-3.5h76q4 0 7.5 3.5t3.5 7.5z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
+
 </main>
 
 <footer class="py-4 border-top">
