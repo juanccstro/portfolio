@@ -58,6 +58,7 @@ header {
     background-color: rgba(246, 244, 239, 0.85);
     backdrop-filter: blur(4px);
     border-bottom: 1px solid var(--border-soft);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .nav-link {
@@ -178,7 +179,7 @@ body {
 
 .reveal {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
     transition:
             opacity 0.8s ease,
             transform 0.8s ease;
@@ -192,3 +193,9 @@ body {
 footer {
     background-color: rgba(255, 255, 255, 0.4);
 }
+
+footer small {
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+}
+
