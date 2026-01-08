@@ -1,0 +1,123 @@
+:root {
+    --paper: #f6f4ef;
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --seal-red: #8f1d18;
+    --border-soft: rgba(0, 0, 0, 0.12);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    color: var(--ink);
+}
+
+a:hover {
+    color: var(--seal-red);
+    text-decoration: none;
+}
+
+.btn-dark {
+    background-color: var(--ink);
+    border-color: var(--ink);
+}
+
+.btn-dark:hover {
+    background-color: var(--seal-red);
+    border-color: var(--seal-red);
+}
+
+.btn-outline-dark {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--ink);
+    color: var(--paper);
+}
+
+header {
+    background-color: rgba(246, 244, 239, 0.85);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}
+
+section:first-of-type {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+h1, h2, h3 {
+    letter-spacing: 0.01em;
+}
+
+.display-5 {
+    font-weight: 600;
+}
+
+p {
+    color: var(--ink-soft);
+}
+
+.border {
+    border-color: var(--border-soft) !important;
+}
+
+.rounded-3 {
+    border-radius: 0.6rem;
+}
+
+article,
+section .border {
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+.badge {
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+.card,
+article,
+section .border {
+    box-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.04),
+            0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.section-divider {
+    width: 60px;
+    height: 2px;
+    background-color: var(--seal-red);
+    margin: 1rem 0 2rem 0;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--paper);
+    background-image: url("../img/paper-texture.webp");
+    background-repeat: repeat;
+    backdrop-filter: blur(1px);
+    line-height: 1.6;
+}
+
+footer {
+    background-color: rgba(255, 255, 255, 0.4);
+}
