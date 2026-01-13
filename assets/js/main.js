@@ -5,24 +5,19 @@
 })();
 
 // Efecto de reveal
-(() => {
-    const reveals = document.querySelectorAll('.reveal');
+const reveals = document.querySelectorAll('.reveal, .hero');
 
-    if (!reveals.length) return;
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    },
+    { threshold: 0.3 }
+);
 
-    const observer = new IntersectionObserver(
-        (entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    obs.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.25
-        }
-    );
+reveals.forEach(el => observer.observe(el));
 
-    reveals.forEach(el => observer.observe(el));
-})();
+

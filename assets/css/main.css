@@ -4,6 +4,11 @@
     --ink-soft: #3a3a3a;
     --seal-red: #8f1d18;
     --border-soft: rgba(0, 0, 0, 0.12);
+
+    .section-divider {
+        --ink-progress: 0%;
+    }
+
 }
 
 *,
@@ -59,6 +64,43 @@ header {
     backdrop-filter: blur(4px);
     border-bottom: 1px solid var(--border-soft);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+    width: 24px;
+    height: 2px;
+    background-color: var(--ink);
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: var(--ink);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.navbar-toggler-icon::before {
+    top: -7px;
+}
+
+.navbar-toggler-icon::after {
+    top: 7px;
 }
 
 .nav-link {
@@ -117,15 +159,77 @@ section .border {
 }
 
 .section-divider {
-    width: 60px;
-    height: 2px;
-    background-color: var(--seal-red);
+    position: relative;
+    width: 84px;
+    height: 3px;
     margin: 1rem 0 2rem 0;
+    overflow: hidden;
+    background: transparent;
 }
 
-#proyectos .section-divider {
-    width: 64px;
+#tecnologias .section-divider{
+    width: 98px;
 }
+
+#perfil .section-divider{
+    width: 160px;
+}
+
+.section-divider::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+            90deg,
+            var(--seal-red),
+            #a72620 40%,
+            var(--seal-red)
+    );
+
+    mask-image: linear-gradient(90deg, #000 0%, #000 100%);
+    mask-repeat: no-repeat;
+    mask-size: 0% 100%;
+    mask-position: left;
+
+    /* WebKit */
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 0% 100%;
+    -webkit-mask-position: left;
+}
+
+.section-divider::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+
+    background:
+            radial-gradient(circle at 10% 60%, rgba(0,0,0,.25) 0%, rgba(0,0,0,.25) 30%, transparent 35%),
+            radial-gradient(circle at 40% 40%, rgba(0,0,0,.18) 0%, rgba(0,0,0,.18) 28%, transparent 34%),
+            radial-gradient(circle at 70% 55%, rgba(0,0,0,.22) 0%, rgba(0,0,0,.22) 32%, transparent 38%);
+
+    opacity: 0.45;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+@keyframes ink-reveal {
+    from {
+        mask-size: 0% 100%;
+        -webkit-mask-size: 0% 100%;
+    }
+    to {
+        mask-size: 100% 100%;
+        -webkit-mask-size: 100% 100%;
+    }
+}
+
+.reveal.is-visible .section-divider::before {
+    animation: ink-reveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+
 
 body {
     margin: 0;
@@ -133,6 +237,75 @@ body {
     Roboto, Helvetica, Arial, sans-serif;
    background-color: var(--paper);
     line-height: 1.6;
+}
+
+.hero .hero-item {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.hero.is-visible .hero-title {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0s;
+}
+
+.hero.is-visible .hero-subtitle {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.12s;
+}
+
+.hero.is-visible .hero-text {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.24s;
+}
+
+.hero.is-visible .hero-actions {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.36s;
+}
+
+.hero.is-visible .hero-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-list,
+#tecnologias ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#tecnologias li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    color: var(--ink-soft);
+}
+
+#tecnologias li + li {
+    margin-top: 0.35rem;
+}
+
+@keyframes tech-float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+#tecnologias li svg {
+    flex-shrink: 0;
+    animation: tech-float 4s ease-in-out infinite;
+}
+
+#tecnologias li:nth-child(2) svg { animation-delay: 0.6s; }
+#tecnologias li:nth-child(3) svg { animation-delay: 1.2s; }
+#tecnologias li:nth-child(4) svg { animation-delay: 1.8s; }
+
+#tecnologias li span,
+#tecnologias li {
+    font-size: 0.95rem;
 }
 
 .icon-link {
