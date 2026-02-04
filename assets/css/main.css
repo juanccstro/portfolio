@@ -253,13 +253,27 @@ section .border {
 }
 
 
-
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
-   background-color: var(--paper);
+    background-color: var(--paper);
     line-height: 1.6;
+}
+
+/* Ocultar el scroll mientras dura la animación */
+body.stop-scroll {
+    overflow: hidden;
+}
+
+canvas#fire-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
 }
 
 .hero .hero-item {
