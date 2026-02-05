@@ -1,33 +1,26 @@
 document.body.classList.add('stop-scroll');
 
-// Fallback de seguridad: nunca dejar la página sin scroll
 setTimeout(() => {
     document.body.classList.remove('stop-scroll');
-}, 3500);
+}, 3000);
 
-// Obtener el año para el footer
 (() => {
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 })();
 
-// Efecto de reveal basado en scroll
 const reveals = document.querySelectorAll('.reveal, .hero');
 
-const observer = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    },
-    { threshold: 0.3 }
-);
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+        }
+    });
+}, { threshold: 0.3 });
 
 reveals.forEach(el => observer.observe(el));
 
-// Animación de papel quemado
 const canvasEl = document.querySelector("#fire-overlay");
 const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
 let startTime = performance.now();
@@ -38,12 +31,10 @@ function createTextTexture(gl) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    const isMobile = window.innerHeight > window.innerWidth;
-
     canvas.width = 2048;
-    canvas.height = isMobile ? 2048 : 1024;
+    canvas.height = 1024;
 
-    ctx.fillStyle = "#f6f4ef";
+    ctx.fillStyle = "rgba(246, 244, 239, 0.92)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const texture = gl.createTexture();
@@ -61,47 +52,8 @@ function createTextTexture(gl) {
         canvas
     );
 
-    const img = new Image();
-    img.src = "assets/img/logo.png";
-
-    img.onload = () => {
-        const maxWidth = canvas.width * 0.3;
-        const maxHeight = canvas.height * 0.2;
-
-        const ratio = Math.min(
-            maxWidth / img.width,
-            maxHeight / img.height
-        );
-
-        const w = img.width * ratio;
-        const h = img.height * ratio;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#f6f4ef";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.drawImage(
-            img,
-            (canvas.width - w) / 2,
-            (canvas.height - h) / 2,
-            w,
-            h
-        );
-
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.texImage2D(
-            gl.TEXTURE_2D,
-            0,
-            gl.RGBA,
-            gl.RGBA,
-            gl.UNSIGNED_BYTE,
-            canvas
-        );
-    };
-
     return texture;
 }
-
 
 function initShader() {
     const vsSource = document.getElementById("vertShader").textContent;
@@ -110,18 +62,11 @@ function initShader() {
 
     if (!gl) return null;
 
-    gl.clearColor(0, 0, 0, 0);
-
     const createS = (type, src) => {
         const s = gl.createShader(type);
         gl.shaderSource(s, src);
         gl.compileShader(s);
-
-        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-            console.error(gl.getShaderInfoLog(s));
-            gl.deleteShader(s);
-            return null;
-        }
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) return null;
         return s;
     };
 
@@ -133,12 +78,6 @@ function initShader() {
     gl.attachShader(program, vs);
     gl.attachShader(program, fs);
     gl.linkProgram(program);
-
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error(gl.getProgramInfoLog(program));
-        return null;
-    }
-
     gl.useProgram(program);
 
     uniforms = {};
@@ -165,10 +104,7 @@ function initShader() {
 
 const gl = initShader();
 
-if (!gl || !uniforms) {
-    canvasEl.style.display = "none";
-    document.body.classList.remove('stop-scroll');
-} else {
+if (gl) {
     const resize = () => {
         canvasEl.width = window.innerWidth * devicePixelRatio;
         canvasEl.height = window.innerHeight * devicePixelRatio;
@@ -176,21 +112,16 @@ if (!gl || !uniforms) {
         gl.uniform2f(uniforms.u_resolution, canvasEl.width, canvasEl.height);
     };
 
-    window.addEventListener("resize", resize);
     resize();
+    window.addEventListener("resize", resize);
 
     function render() {
-        const elapsed = (performance.now() - startTime) / 6000; // Duración animación
+        const elapsed = (performance.now() - startTime) / 5500;
 
         gl.clear(gl.COLOR_BUFFER_BIT);
 
         if (elapsed <= 1) {
-            animationProgress = 0.3 + 0.7 * (
-                elapsed < 0.5
-                    ? 2 * elapsed * elapsed
-                    : 1 - Math.pow(-2 * elapsed + 2, 2) / 2
-            );
-
+            animationProgress = 0.3 + 0.7 * elapsed;
             gl.uniform1f(uniforms.u_time, performance.now() * 0.001);
             gl.uniform1f(uniforms.u_progress, animationProgress);
             gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);

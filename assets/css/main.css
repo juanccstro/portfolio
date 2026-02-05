@@ -18,6 +18,7 @@ html {
 
 .section-divider {
     --ink-progress: 0%;
+    filter: contrast(1.1);
 }
 
 a {
@@ -119,6 +120,7 @@ section:first-of-type {
     align-items: center;
 }
 
+
 h1, h2, h3 {
     letter-spacing: 0.01em;
 }
@@ -180,7 +182,6 @@ section .border {
     color: var(--seal-red);
 }
 
-
 .section-divider {
     position: relative;
     width: 84px;
@@ -215,7 +216,6 @@ section .border {
     mask-size: 0% 100%;
     mask-position: left;
 
-    /* WebKit */
     -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 100%);
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: 0% 100%;
@@ -266,7 +266,7 @@ body.stop-scroll {
     overflow: hidden;
 }
 
-canvas#fire-overlay {
+#fire-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -274,6 +274,7 @@ canvas#fire-overlay {
     height: 100vh;
     pointer-events: none;
     z-index: 9999;
+    transition: opacity 0.4s ease;
 }
 
 .hero .hero-item {
@@ -284,11 +285,25 @@ canvas#fire-overlay {
 .hero.is-visible .hero-title {
     transition: opacity 0.8s ease, transform 0.8s ease;
     transition-delay: 0s;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.hero-seal {
+    width: 10px;
+    height: 10px;
+    background-color: var(--seal-red);
+    border-radius: 2px;
+    box-shadow: 0 0 0 2px rgba(143, 29, 24, 0.15);
 }
 
 .hero.is-visible .hero-subtitle {
     transition: opacity 0.8s ease, transform 0.8s ease;
     transition-delay: 0.12s;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 .hero.is-visible .hero-text {
