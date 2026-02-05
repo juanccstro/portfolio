@@ -301,6 +301,7 @@ body.stop-scroll {
 .hero.is-visible .hero-subtitle {
     transition: opacity 0.8s ease, transform 0.8s ease;
     transition-delay: 0.12s;
+    color: rgba(26, 26, 26, 0.78);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -415,14 +416,47 @@ body.stop-scroll {
     transform: translateY(0);
 }
 
+
 footer {
     background-color: rgba(255, 255, 255, 0.4);
+    border-top: 1px solid var(--border-soft);
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    text-align: center;
+}
+
+.footer-logo {
+    height: 26px;
+    width: auto;
+    opacity: 0.4;
+    filter: grayscale(100%) contrast(1.05);
+    transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
+}
+
+.footer-logo:hover {
+    opacity: 0.75;
+    transform: translateY(-1px);
 }
 
 footer small {
+    font-size: 0.8rem;
     color: var(--ink-soft);
     letter-spacing: 0.03em;
 }
+
+@media (min-width: 1200px) {
+    .hero {
+        padding-top: 3.5rem;
+    }
+}
+
 
 @media (max-width: 991px) {
     #main .border.rounded-3 {
@@ -437,5 +471,24 @@ footer small {
     #contacto .contact-icons {
         justify-content: center;
     }
+
+    .footer-logo {
+        height: 24px;
+    }
+
+    footer small {
+        font-size: 0.78rem;
+    }
 }
+
+@media (max-width: 575px) {
+    .footer-logo {
+        height: 22px;
+    }
+
+    footer small {
+        font-size: 0.75rem;
+    }
+}
+
 
