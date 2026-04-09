@@ -14,3 +14,19 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.3 });
 
 reveals.forEach(el => observer.observe(el));
+
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+function switchTheme() {
+    document.documentElement.classList.toggle('dark');
+}
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        if (!document.startViewTransition) {
+            switchTheme();
+        } else {
+            document.startViewTransition(switchTheme);
+        }
+    });
+}
