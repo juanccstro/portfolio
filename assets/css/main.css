@@ -641,11 +641,12 @@ html.dark .btn-outline-dark:hover {
 }
 
 ::view-transition-new(root) {
-    -webkit-mask: url('https://media.tenor.com/t34uN5e1nJ4AAAAi/slash.gif') center / 0 no-repeat;
-    mask: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzU0Y3VhcmV6YXIzMTJrZWdqdTFkN3BiaXI0YmR2NWJkaXo5MjA4MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/2xiQYLZLWqEQo/giphy.gif') center / 0 no-repeat;
+    -webkit-mask: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJpMXk3MHZ5Z3o5azVwcm84Y284bnI2NGMzNHlhZGI3cmp5d2h6ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LY7SirwbAp2c5U1hhx/giphy.gif') center / 0 no-repeat;
+    mask: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnJpMXk3MHZ5Z3o5azVwcm84Y284bnI2NGMzNHlhZGI3cmp5d2h6ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LY7SirwbAp2c5U1hhx/giphy.gif') center / 0 no-repeat;
     animation: scale-samurai var(--transition-speed);
     animation-fill-mode: both;
 }
+
 
 ::view-transition-old(root),
 .dark::view-transition-old(root) {
@@ -659,15 +660,15 @@ html.dark .btn-outline-dark:hover {
         mask-size: 0;
     }
     10% {
-        -webkit-mask-size: 50vmax;
-        mask-size: 50vmax;
+        -webkit-mask-size: 20vmax;
+        mask-size: 20vmax;
     }
     90% {
-        -webkit-mask-size: 50vmax;
-        mask-size: 50vmax;
+        -webkit-mask-size: 20vmax;
+        mask-size: 20vmax;
     }
     100% {
-        -webkit-mask-size: 2000vmax;
-        mask-size: 2000vmax;
+        -webkit-mask-size: 3000vmax;
+        mask-size: 30o0vmax;
     }
 }
