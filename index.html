@@ -22,9 +22,18 @@
 
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.183.2/build/three.module.js"
+      }
+    }
+    </script>
 </head>
 
 <body>
+<div id="katana-canvas-container"></div>
 <a class="visually-hidden-focusable" href="#main">Saltar al contenido</a>
 
 <header class="py-3">
@@ -320,5 +329,6 @@
 
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script type="module" src="assets/js/katana.js"></script>
 </body>
 </html>
