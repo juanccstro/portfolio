@@ -672,15 +672,3 @@ html.dark .btn-outline-dark:hover {
         mask-size: 30o0vmax;
     }
 }
-
-/* KATANA 3D CONTAINER */
-#katana-canvas-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 50; /* Por encima del contenido pero debajo del header si el header tiene más z-index */
-    pointer-events: none; /* FUNDAMENTAL: Permite que los clics traspasen la katana */
-    overflow: hidden;
-}
