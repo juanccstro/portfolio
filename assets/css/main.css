@@ -603,7 +603,7 @@ html.dark .icon-link:hover {
 }
 
 html.dark footer {
-    background-color: var(--paper); 
+    background-color: #e6e5e2; 
     border-top-color: transparent;
 }
 
