@@ -43,6 +43,7 @@ p {
 
 a {
     color: var(--ink);
+    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -61,10 +62,10 @@ a:hover {
 .badge {
     font-weight: 500;
     letter-spacing: 0.03em;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 /* BOTÓN CAMBIO DE TEMA (ANIMACIÓN SOL/LUNA) */
-
 .theme-toggle-btn {
     background: none;
     border: none;
@@ -112,39 +113,12 @@ a:hover {
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-html.dark .theme-toggle-btn {
-    color: var(--ink-soft);
-}
-
-html.dark .theme-toggle-btn:hover {
-    color: var(--tsushima-ocre);
-    background-color: rgba(196, 156, 99, 0.1);
-}
-
-html.dark .sun-and-moon {
-    transform: rotate(40deg);
-}
-
-html.dark .sun-and-moon > .sun {
-    transform: scale(1.75);
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-html.dark .sun-and-moon > .sun-beams {
-    opacity: 0;
-    transform: rotate(-25deg);
-}
-
-/* Mover el círculo negro de la máscara para crear la luna */
-html.dark .sun-and-moon .moon > circle {
-    transform: translateX(-7px) translateY(2px);
-}
-
 /* BOTONES */
 .btn {
     border-radius: 999px;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+    transition: all 0.3s ease;
 }
 
 .btn-dark {
@@ -167,18 +141,6 @@ html.dark .sun-and-moon .moon > circle {
 .btn-outline-dark:hover {
     background-color: var(--ink) !important;
     color: var(--paper) !important;
-}
-
-.theme-btn-style {
-    color: var(--ink-soft);
-    border-color: transparent;
-    padding: 0.25rem 0.5rem;
-}
-
-.theme-btn-style:hover {
-    color: var(--tsushima-ocre);
-    background-color: rgba(196, 156, 99, 0.1) !important;
-    border-color: transparent !important;
 }
 
 /* CABECERA / NAVBAR */
@@ -234,6 +196,7 @@ header {
     font-size: 0.95rem;
     letter-spacing: 0.02em;
     color: var(--ink);
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover,
@@ -253,7 +216,7 @@ section .border {
     background-color: #fff;
     border: none !important;
     box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.4s ease;
 }
 
 article:hover {
@@ -335,6 +298,7 @@ article:hover {
     gap: 0.75rem;
     padding: 0.45rem 0;
     color: var(--ink-soft);
+    transition: border-color 0.3s ease;
 }
 
 #tecnologias li + li {
@@ -356,7 +320,7 @@ article:hover {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.55);
     color: var(--ink);
-    transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .icon {
@@ -383,6 +347,7 @@ article:hover {
 footer {
     background-color: rgba(255, 255, 255, 0.4);
     border-top: 1px solid var(--border-soft);
+    transition: background-color 0.4s ease;
 }
 
 .footer-inner {
@@ -412,7 +377,7 @@ footer small {
     letter-spacing: 0.03em;
 }
 
-/* ANIMACIONES */
+/* ANIMACIONES DE ENTRADA */
 .reveal {
     opacity: 0;
     transform: translateY(16px);
@@ -443,6 +408,7 @@ footer small {
     background-color: var(--seal-red);
     border-radius: 2px;
     box-shadow: 0 0 0 2px rgba(143, 29, 24, 0.15);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .hero.is-visible .hero-subtitle {
@@ -522,27 +488,44 @@ footer small {
     footer small { font-size: 0.75rem; }
 }
 
-/* MODO OSCURO (DARK THEME) */
+/* =========================================
+   MODO OSCURO (DARK THEME)
+   ========================================= */
+
+/* Paleta invertida y acentos dorados */
 html.dark {
     --paper: #121212;
     --ink: #ffffff;
-    --ink-soft: #b8b8b8; 
-    --seal-red: #e03127; 
-    --border-soft: rgba(255, 255, 255, 0.1);
+    --ink-soft: #eaddcf; /* Sand tone text for softness */
+    --seal-red: #8f1d18; 
+    --border-soft: rgba(196, 156, 99, 0.15); /* Subtly golden borders */
 }
 
+/* Modificaciones Base en Dark Mode */
 html.dark header {
     background-color: rgba(18, 18, 18, 0.85);
+    border-bottom: 1px solid var(--border-soft);
 }
 
 html.dark .navbar-brand {
     color: #ffffff !important;
 }
 
-html.dark .hero-subtitle {
-    color: var(--tsushima-ocre) !important;
+/* Enlaces generales cambian hover a dorado */
+html.dark a:hover {
+    color: var(--tsushima-ocre);
 }
 
+html.dark .nav-link:not(:hover) {
+    color: var(--ink);
+}
+
+html.dark .nav-link:hover,
+html.dark .nav-link:focus {
+    color: var(--tsushima-ocre);
+}
+
+/* Tarjetas y Contenedores */
 html.dark article,
 html.dark section .border {
     background-color: #1a1a1a;
@@ -553,12 +536,19 @@ html.dark article:hover {
     box-shadow: 0 10px 15px rgba(0,0,0,0.6), 0 4px 6px rgba(0,0,0,0.7);
 }
 
-html.dark .nav-link:not(:hover) {
-    color: var(--ink);
+/* Elementos Hero - Subtítulo y Sello */
+html.dark .hero-subtitle {
+    color: var(--tsushima-ocre) !important;
 }
 
+html.dark .hero-seal {
+    background-color: var(--tsushima-ocre);
+    box-shadow: 0 0 0 2px rgba(196, 156, 99, 0.2);
+}
+
+/* Divisores de Sección - Degradado a Dorado */
 html.dark .section-divider::before {
-    background: linear-gradient( 90deg, var(--seal-red), #ff4d45 40%, var(--seal-red) );
+    background: linear-gradient( 90deg, var(--tsushima-ocre), #e6c898 40%, var(--tsushima-ocre) );
 }
 
 html.dark .section-divider::after {
@@ -566,9 +556,9 @@ html.dark .section-divider::after {
     filter: invert(1);
 }
 
-html.dark .hero-seal {
-    background-color: var(--tsushima-ocre);
-    box-shadow: 0 0 0 2px rgba(196, 156, 99, 0.2);
+/* Listas y Badges */
+html.dark .resume-list li::before {
+    color: var(--tsushima-ocre);
 }
 
 html.dark .badge {
@@ -582,26 +572,85 @@ html.dark .badge:hover {
     color: var(--tsushima-ocre) !important;
 }
 
-html.dark .resume-list li::before {
-    color: var(--seal-red);
-}
-
 html.dark #tecnologias li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(196, 156, 99, 0.05); /* Separador dorado muy sutil */
 }
 
+/* Botones de Iconos de Contacto */
 html.dark .icon-link {
     background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(196, 156, 99, 0.1);
     color: var(--ink-soft);
 }
 
-html.dark .icon-link:hover {
-    background: rgba(196, 156, 99, 0.05);
-    border-color: rgba(196, 156, 99, 0.2);
+html.dark .icon-link:hover,
+html.dark .icon-link:focus {
+    background: rgba(196, 156, 99, 0.08);
+    border-color: rgba(196, 156, 99, 0.3);
     color: var(--tsushima-ocre);
 }
 
+html.dark .icon-link:focus {
+    box-shadow: 0 0 0 3px rgba(196, 156, 99, 0.2);
+}
+
+/* Botones Principales */
+html.dark .btn-dark {
+    background-color: var(--tsushima-ocre);
+    border-color: var(--tsushima-ocre);
+    color: #121212;
+    font-weight: 600;
+}
+
+html.dark .btn-dark:hover {
+    background-color: #e6c898;
+    border-color: #e6c898;
+}
+
+html.dark .btn-outline-dark {
+    color: var(--ink);
+    border-color: var(--border-soft);
+}
+
+html.dark .btn-outline-dark:hover {
+    background-color: var(--tsushima-ocre) !important;
+    color: #121212 !important;
+    border-color: var(--tsushima-ocre) !important;
+}
+
+/* Icono Tema Dark Mode */
+html.dark .theme-toggle-btn {
+    color: var(--ink-soft);
+}
+
+html.dark .theme-toggle-btn:hover {
+    color: var(--tsushima-ocre);
+    background-color: rgba(196, 156, 99, 0.1);
+}
+
+html.dark .sun-and-moon {
+    transform: rotate(40deg);
+}
+
+html.dark .sun-and-moon > .sun {
+    transform: scale(1.75);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+html.dark .sun-and-moon > .sun-beams {
+    opacity: 0;
+    transform: rotate(-25deg);
+}
+
+html.dark .sun-and-moon .moon > circle {
+    transform: translateX(-7px) translateY(2px);
+}
+
+html.dark .theme-toggle-btn:focus-visible {
+    outline-color: var(--tsushima-ocre);
+}
+
+/* Footer Dark Mode */
 html.dark footer {
     background-color: #e6e5e2; 
     border-top-color: transparent;
@@ -612,30 +661,9 @@ html.dark footer small {
     font-weight: 500;
 }
 
-html.dark .btn-dark {
-    background-color: var(--tsushima-ocre);
-    border-color: var(--tsushima-ocre);
-    color: #121212;
-    font-weight: 600;
-}
-
-html.dark .btn-dark:hover {
-    background-color: #d6af7a;
-    border-color: #d6af7a;
-}
-
-html.dark .btn-outline-dark {
-    color: var(--ink);
-    border-color: var(--ink);
-}
-
-html.dark .btn-outline-dark:hover {
-    background-color: var(--ink) !important;
-    color: #121212 !important;
-    border-color: var(--ink) !important;
-}
-
-/* ANIMACIÓN VIEW TRANSITIONS (SAMURAI) */
+/* =========================================
+   ANIMACIÓN VIEW TRANSITIONS (SAMURAI)
+   ========================================= */
 ::view-transition-group(root) {
     animation-timing-function: var(--expo-in);
 }
@@ -646,7 +674,6 @@ html.dark .btn-outline-dark:hover {
     animation: scale-samurai var(--transition-speed);
     animation-fill-mode: both;
 }
-
 
 ::view-transition-old(root),
 .dark::view-transition-old(root) {
@@ -669,6 +696,6 @@ html.dark .btn-outline-dark:hover {
     }
     100% {
         -webkit-mask-size: 3000vmax;
-        mask-size: 30o0vmax;
+        mask-size: 3000vmax;
     }
 }
