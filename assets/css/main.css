@@ -488,17 +488,15 @@ footer small {
     footer small { font-size: 0.75rem; }
 }
 
-/* =========================================
-   MODO OSCURO (DARK THEME)
-   ========================================= */
+/* MODO OSCURO (DARK THEME) */
 
 /* Paleta invertida y acentos dorados */
 html.dark {
     --paper: #121212;
     --ink: #ffffff;
-    --ink-soft: #eaddcf; /* Sand tone text for softness */
+    --ink-soft: #eaddcf;
     --seal-red: #8f1d18; 
-    --border-soft: rgba(196, 156, 99, 0.15); /* Subtly golden borders */
+    --border-soft: rgba(196, 156, 99, 0.15); 
 }
 
 /* Modificaciones Base en Dark Mode */
@@ -661,9 +659,7 @@ html.dark footer small {
     font-weight: 500;
 }
 
-/* =========================================
-   ANIMACIÓN VIEW TRANSITIONS (SAMURAI)
-   ========================================= */
+/* ANIMACIÓN VIEW TRANSITIONS (SAMURAI) */
 ::view-transition-group(root) {
     animation-timing-function: var(--expo-in);
 }

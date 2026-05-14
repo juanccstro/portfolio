@@ -15,9 +15,7 @@ const observer = new IntersectionObserver(entries => {
 
 reveals.forEach(el => observer.observe(el));
 
-/* =========================================
-   TEMA MODO OSCURO / VIEW TRANSITION
-   ========================================= */
+/* TEMA MODO OSCURO / VIEW TRANSITION */
 const themeToggleBtn = document.getElementById('theme-toggle');
 
 // Función que aplica el cambio real en el DOM y lo guarda en memoria
